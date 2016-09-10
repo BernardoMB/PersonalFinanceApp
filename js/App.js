@@ -1,14 +1,5 @@
-colorsMafer = [
-    '#9b59b6', // Morado
-    '#34495e', // Gris obscuro
-    '#5dade2', // Azul claro
-    '#f5b7b1', // Rosa claro
-    '#e5e8e8', // Gris claro
-    '#58d68d', // Verde 
-    '#F7DC6F', // Amarillo
-    '#EC7063', // Rojo
-    '#E67E22' // Naranja
-];
+// TODO: Desaparecer todo el codigo de la tabla que implementa el php.
+// El tema de bases de datos será manejado a traves de Andrew Mead.
 
 incomeColors = [
     '#0072BB',
