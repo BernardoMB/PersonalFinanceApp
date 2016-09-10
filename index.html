@@ -8,26 +8,21 @@
 
     <meta name="description" content="Angular Material: Containers with the Layout API">
 
-    <link rel="stylesheet" href="/css/style.css" />
-
-    <!--LOCAL /*-->
-    <link rel="stylesheet" href="/css/angular-material.min.css" />
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/angular-material.min.css" />
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-aria.min.js"></script>
+    <script src="js/angular-material.min.js"></script>
     
-    <script src="/js/angular.min.js"></script>
-    <script src="/js/angular-animate.min.js"></script>
-    <script src="/js/angular-aria.min.js"></script>
-    <script src="/js/angular-material.min.js"></script>
-    <!--LOCAL */-->
-
-    <!-- Tables LIBRARY/* -->
+    <!-- Tables LIBRARY -->
     <!--El ejemplo para usar la tabla esta en mis favoritos de Google Chrome, entrar al repositorio y hacer clic en el ejemplo del repositorio.-->
     <!-- style sheet -->
-    <link href="/css/md-data-table.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/md-data-table.min.css" rel="stylesheet" type="text/css" />
     <!-- module -->
-    <script type="text/javascript" src="/js/md-data-table.min.js"></script>
-    <!-- Tables LIBRARY*/ -->
+    <script type="text/javascript" src="js/md-data-table.min.js"></script>
 
-    <script src="/js/Chart.js"></script>
+    <script src="js/Chart.js"></script>
     <script src="js/App.js"></script>
 
 </head>
@@ -50,7 +45,7 @@
                 <!-- List item #1 NEW INCOME -->
                 <md-list-item>
                     <md-button ng-click="openNewEntryMdDialog(true)">
-                        <md-icon md-svg-src="/svgs/avatar-3.svg" class="avatar"></md-icon>
+                        <md-icon md-svg-src="svgs/avatar-3.svg" class="avatar"></md-icon>
                         New income
                     </md-button>
                 </md-list-item>
@@ -58,14 +53,10 @@
                 <!-- List item #2 NEW EXPENSE -->
                 <md-list-item>
                     <md-button ng-click="openNewEntryMdDialog(false)">
-                        <md-icon md-svg-src="/svgs/avatar-4.svg" class="avatar"></md-icon>
+                        <md-icon md-svg-src="svgs/avatar-4.svg" class="avatar"></md-icon>
                         New expense
                     </md-button>
                 </md-list-item>
-                
-                
-                
-                
                 
                 <div>
                 
@@ -85,9 +76,6 @@
                     </div>
                 
                 </div>
-                
-                
-                
                 
             </md-list>
 
