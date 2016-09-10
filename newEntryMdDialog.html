@@ -1,0 +1,33 @@
+<md-dialog aria-label="List dialog">
+    <md-dialog-content style="padding: 28px">
+        <h2 class="md-title ng-binding">New {{tipoDeOp}}</h2>
+        
+        <div layout="row">
+            
+            <md-input-container md-no-float="" class="md-prompt-input-container md-input-has-placeholder md-default-theme" style="width: 120px;padding-top: 0px;padding-bottom: 0px;margin-top: 22px;">
+                <input ng-model="amount.value" md-autofocus="" placeholder="numeric value" class="ng-pristine ng-valid md-input ng-empty _md-autofocus ng-touched" id="input_17" aria-invalid="false" style="">
+                <div class="md-errors-spacer">
+                </div>
+            </md-input-container>
+            
+            <!-- Date -->
+            <md-datepicker ng-model="entryDate.date" md-placeholder="Enter date" style="margin-top: 18px; margin-bottom: 18px; margin-right: 0px;"></md-datepicker>
+            
+        </div>
+        
+        <center>
+            <md-button ng-click="openToExistingCategoryMdDialog()" class="md-primary">
+                Add to existing category
+            </md-button>
+            <md-button ng-click="openToNewCategoryMdDialog()" class="md-primary">
+                Add to new category
+            </md-button>
+        </center>
+        
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="closeDialog()" class="md-primary">
+            Cancel
+        </md-button>
+    </md-dialog-actions>
+</md-dialog> 

@@ -1,0 +1,35 @@
+<md-dialog aria-label="List dialog">
+    
+    <md-dialog-content style="padding: 24px" layout="column">
+        <h2 class="md-title ng-binding">Specify category</h2>
+        
+        <md-input-container style="margin-bottom: 24px;">
+            <label>Category</label>
+            <md-select ng-model="selectedCategory" ng-change="handleChange()">
+                <md-option ng-repeat="cat in categoriesDM" value="{{cat}}">
+                    {{cat}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    
+        <md-input-container /*Para que el placeholder aparezca en la linea y no arriba*/md-no-float="" class="md-prompt-input-container md-input-has-placeholder md-default-theme" style="padding-top: 0px;padding-bottom: 0px;margin-top: 0px;">
+            <input ng-model="entryComment.comment" md-autofocus="" placeholder="comment" class="ng-pristine ng-valid md-input ng-empty _md-autofocus ng-touched" id="input_17" aria-invalid="false" style="">
+                <div class="md-errors-spacer">
+                </div>
+            </md-input-container>
+        
+    </md-dialog-content>
+    
+    <md-dialog-actions>
+        
+        <md-button ng-click="closeDialog()" class="md-primary">
+            Cancel
+        </md-button>
+        
+        <md-button ng-click="graph()" class="md-primary">
+            Done
+        </md-button>
+        
+    </md-dialog-actions>
+    
+</md-dialog>
