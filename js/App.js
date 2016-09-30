@@ -378,7 +378,7 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
     $scope.deleteSelectedEntries = function() {
         for (var a in $scope.selected) {
             for (var b in $scope.IEentries.IEentriesArray) {
-                if ($scope.selected[a].type === $scope.IEentries.IEentriesArray[b]. type && $scope.selected[a].category === $scope.IEentries.IEentriesArray[b].category && $scope.selected[a].amount === $scope.IEentries.IEentriesArray[b].amount && $scope.selected[a].date === $scope.IEentries.IEentriesArray[b].date && $scope.selected[a].comment === $scope.IEentries.IEentriesArray[b].comment) {
+                if ($scope.selected[a].id === $scope.IEentries.IEentriesArray[b].id) {
                     var index = $scope.IEentries.IEentriesArray.indexOf($scope.IEentries.IEentriesArray[b]);
                     $scope.IEentries.IEentriesArray.splice(index, 1);
                     if ($scope.selected[a].type === 'Income') {
