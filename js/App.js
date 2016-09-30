@@ -1,4 +1,3 @@
-// TODO: Desaparecer todo el codigo de la tabla que implementa el php.
 // El tema de bases de datos será manejado a traves de Andrew Mead.
 
 incomeColors = [
@@ -28,6 +27,7 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
     // App's code.
 
     // Globales /*
+    $scope.id = 0;
     $scope.isIncome = {
         bool: null
     }
@@ -36,7 +36,6 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
     $scope.incomeEntries = {
         incomeEntriesArray: []
     }
-    
     $scope.incomeCategories = {
         incomeCategoriesArray: []
     }
@@ -45,7 +44,6 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
     $scope.entries = {
         entriesArray: []
     }
-    
     $scope.categories = {
         categoriesArray: []
     }
@@ -59,14 +57,12 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
     $scope.superavit = {
         bool: null
     }
-    
     $scope.balance;
     
     // Errors.
     $scope.errorNumber = {
         value: null
     }
-    
     $scope.errorMessage = {
         errorString: ''
     }
@@ -140,6 +136,7 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
             maintainAspectRatio: false
         });
         // Income */
+
         // Expenses /*
         // Prepare chart info.
         var chartLabels = [];
@@ -251,7 +248,6 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
         }
         $scope.showNewEntryMdDialog();
     }
-
     $scope.showNewEntryMdDialog = function() {
         if ($scope.isIncome.bool) {
             $scope.op = 'income';
@@ -271,37 +267,34 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
     };
 
     
-    
-    
-    
     // Fake data /*
     // Icome:
     // Income entries.
     var incomeEntriesFake = [
         {
+        id: 0,
         amount: "5000",
         category: "Morpheus",
         comment: "Mapa y linea del tiempo",
         date: 1470714982.006,
         indispensable: null,
-        type: "Income",
-        id: null
+        type: "Income"
     }, {
+        id: 1,
         amount: "2000",
         category: "Scribes",
         comment: "Gringas",
         date: 1470714982.007,
         indispensable: null,
-        type: "Income",
-        id: null
+        type: "Income"
     }, {
+        id: 2,
         amount: "2000",
         category: "Faenas",
         comment: "Favor a Luis",
         date: 1470714982.008,
         indispensable: null,
-        type: "Income",
-        id: null
+        type: "Income"
     }];
     // Income categories.
     var incomeCategoriesFake = ["Morpheus", "Scribes", "Faenas"];
@@ -309,53 +302,53 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
     // Expense entries.
     var expenseEntriesFake = [
         {
+        id: 3,
         amount: "2000",
         category: "Comida",
         comment: "",
         date: 1470714982.009,
         indispensable: null,
-        type: "Expense",
-        id: null
+        type: "Expense"
     }, {
+        id: 4,
         amount: "2000",
         category: "Coche",
         comment: "Refacciones",
         date: 1470714982.010,
         indispensable: null,
-        type: "Expense",
-        id: null
+        type: "Expense"
     }, {
+        id: 5,
         amount: "1000",
         category: "Gasolina",
         comment: "",
         date: 1470714982.011,
         indispensable: null,
-        type: "Expense",
-        id: null
+        type: "Expense"
     }, {
+        id: 6,
         amount: "2000",
         category: "Diversion",
         comment: "Con amigos",
         date: 1470714982.012,
         indispensable: null,
-        type: "Expense",
-        id: null
+        type: "Expense"
     }, {
+        id: 7,
         amount: "1000",
         category: "Fer",
         comment: "Salidas",
         date: 1470714982.013,
         indispensable: null,
-        type: "Expense",
-        id: null
+        type: "Expense"
     }, {
+        id: 8,
         amount: "3500",
         category: "Casa",
         comment: "Renta",
         date: 1470714982.014,
         indispensable: null,
-        type: "Expense",
-        id: null
+        type: "Expense"
     }];
     // Expense categories.
     var expenseCategoriesFake = ["Comida", "Coche", "Gasolina", "Diversion", "Fer", "Casa"];
@@ -375,16 +368,13 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
     $scope.categories.categoriesArray = expenseCategoriesFake;
     // General.
     $scope.IEentries.IEentriesArray = $scope.generalFake;
+    $scope.id = $scope.id + $scope.incomeCategories.incomeCategoriesArray.length + $scope.entries.entriesArray.length;
     // Fake data */
 
-
     
-    
-    
-
     // Código de la tabla /*
-
-    // Mio.
+    
+    $scope.selected = [];
     $scope.deleteSelectedEntries = function() {
         for (var a in $scope.selected) {
             for (var b in $scope.IEentries.IEentriesArray) {
@@ -429,15 +419,15 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
         $scope.selected = [];
         $scope.graphMain();
     }
+    
+    // Creo que no tiene razon de ser.
+    // TODO ver quien o que llama esta funcion.
     $scope.nada = function() {
 
     }
 
     'use strict';
-
-    $scope.selected = [];
     $scope.limitOptions = [5, 10, 15];
-
     $scope.options = {
         rowSelection: true,
         multiSelect: true,
@@ -448,234 +438,11 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
         limitSelect: true,
         pageSelect: true
     };
-
     $scope.query = {
         order: 'date',
         limit: 5,
         page: 1
     };
-
-    $scope.desserts = {
-        "count": 9,
-        "data": [{
-            "name": "Frozen yogurt",
-            "type": "Ice cream",
-            "calories": {
-                "value": 159.0
-            },
-            "fat": {
-                "value": 6.0
-            },
-            "carbs": {
-                "value": 24.0
-            },
-            "protein": {
-                "value": 4.0
-            },
-            "sodium": {
-                "value": 87.0
-            },
-            "calcium": {
-                "value": 14.0
-            },
-            "iron": {
-                "value": 1.0
-            }
-        }, {
-            "name": "Ice cream sandwich",
-            "type": "Ice cream",
-            "calories": {
-                "value": 237.0
-            },
-            "fat": {
-                "value": 9.0
-            },
-            "carbs": {
-                "value": 37.0
-            },
-            "protein": {
-                "value": 4.3
-            },
-            "sodium": {
-                "value": 129.0
-            },
-            "calcium": {
-                "value": 8.0
-            },
-            "iron": {
-                "value": 1.0
-            }
-        }, {
-            "name": "Eclair",
-            "type": "Pastry",
-            "calories": {
-                "value": 262.0
-            },
-            "fat": {
-                "value": 16.0
-            },
-            "carbs": {
-                "value": 24.0
-            },
-            "protein": {
-                "value": 6.0
-            },
-            "sodium": {
-                "value": 337.0
-            },
-            "calcium": {
-                "value": 6.0
-            },
-            "iron": {
-                "value": 7.0
-            }
-        }, {
-            "name": "Cupcake",
-            "type": "Pastry",
-            "calories": {
-                "value": 305.0
-            },
-            "fat": {
-                "value": 3.7
-            },
-            "carbs": {
-                "value": 67.0
-            },
-            "protein": {
-                "value": 4.3
-            },
-            "sodium": {
-                "value": 413.0
-            },
-            "calcium": {
-                "value": 3.0
-            },
-            "iron": {
-                "value": 8.0
-            }
-        }, {
-            "name": "Jelly bean",
-            "type": "Candy",
-            "calories": {
-                "value": 375.0
-            },
-            "fat": {
-                "value": 0.0
-            },
-            "carbs": {
-                "value": 94.0
-            },
-            "protein": {
-                "value": 0.0
-            },
-            "sodium": {
-                "value": 50.0
-            },
-            "calcium": {
-                "value": 0.0
-            },
-            "iron": {
-                "value": 0.0
-            }
-        }, {
-            "name": "Lollipop",
-            "type": "Candy",
-            "calories": {
-                "value": 392.0
-            },
-            "fat": {
-                "value": 0.2
-            },
-            "carbs": {
-                "value": 98.0
-            },
-            "protein": {
-                "value": 0.0
-            },
-            "sodium": {
-                "value": 38.0
-            },
-            "calcium": {
-                "value": 0.0
-            },
-            "iron": {
-                "value": 2.0
-            }
-        }, {
-            "name": "Honeycomb",
-            "type": "Other",
-            "calories": {
-                "value": 408.0
-            },
-            "fat": {
-                "value": 3.2
-            },
-            "carbs": {
-                "value": 87.0
-            },
-            "protein": {
-                "value": 6.5
-            },
-            "sodium": {
-                "value": 562.0
-            },
-            "calcium": {
-                "value": 0.0
-            },
-            "iron": {
-                "value": 45.0
-            }
-        }, {
-            "name": "Donut",
-            "type": "Pastry",
-            "calories": {
-                "value": 452.0
-            },
-            "fat": {
-                "value": 25.0
-            },
-            "carbs": {
-                "value": 51.0
-            },
-            "protein": {
-                "value": 4.9
-            },
-            "sodium": {
-                "value": 326.0
-            },
-            "calcium": {
-                "value": 2.0
-            },
-            "iron": {
-                "value": 22.0
-            }
-        }, {
-            "name": "KitKat",
-            "type": "Candy",
-            "calories": {
-                "value": 518.0
-            },
-            "fat": {
-                "value": 26.0
-            },
-            "carbs": {
-                "value": 65.0
-            },
-            "protein": {
-                "value": 7.0
-            },
-            "sodium": {
-                "value": 54.0
-            },
-            "calcium": {
-                "value": 12.0
-            },
-            "iron": {
-                "value": 6.0
-            }
-        }]
-    };
-
     $scope.toggleLimitOptions = function() {
         $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
     };
@@ -698,15 +465,12 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
             // loading
         }, 2000);
     }*/
-
     $scope.logItem = function(item) {
         console.log(item, 'was selected');
     };
-
     $scope.logOrder = function(order) {
         console.log('order: ', order);
     };
-
     $scope.logPagination = function(page, limit) {
         console.log('page: ', page);
         console.log('limit: ', limit);
@@ -759,15 +523,11 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
         });
         console.log($scope.IEentries.IEentriesArray);
     };
-    
     // Edicion de valores de la tabla */
     
     // Código de la tabla */
 
 }]);
-
-
-
 
 // NEW ENTRY md Dialog controller.
 angular.module('PFApp').controller('newEntryCont', ['$scope', '$mdDialog', function($scope, $mdDialog) {
@@ -781,7 +541,8 @@ angular.module('PFApp').controller('newEntryCont', ['$scope', '$mdDialog', funct
     $scope.entryDate = {
             date: null
         }
-        // Temporales */
+    // Temporales */
+    
     $scope.entryDate.date = new Date();
 
     $scope.openToExistingCategoryMdDialog = function() {
@@ -917,10 +678,8 @@ angular.module('PFApp').controller('newEntryCont', ['$scope', '$mdDialog', funct
     $scope.closeDialog = function() {
         $mdDialog.hide();
     }
+    
 }]);
-
-
-
 
 // Add to NEW CATEGORY md-dialog controller.
 angular.module('PFApp').controller('toNewMdDialogCont', ['$scope', '$mdDialog', function($scope, $mdDialog) {
@@ -940,14 +699,15 @@ angular.module('PFApp').controller('toNewMdDialogCont', ['$scope', '$mdDialog', 
                 if ($scope.isIncome.bool) {
                     // Es de income.
                     var object = {
+                        id: $scope.id,
                         type: 'Income',
                         category: $scope.newCat,
                         amount: $scope.amount.value,
                         comment: $scope.entryComment.comment,
                         date: seconds,
-                        indispensable: null,
-                        id: 'Income' + $scope.newCat + $scope.amount.value + $scope.entryComment.comment + seconds + null
+                        indispensable: null
                     };
+                    $scope.id++;
                     $scope.incomeEntries.incomeEntriesArray.push(object);
                     $scope.IEentries.IEentriesArray.push(object);
                     if ($scope.incomeCategories.incomeCategoriesArray.indexOf($scope.newCat) === -1) {
@@ -962,14 +722,15 @@ angular.module('PFApp').controller('toNewMdDialogCont', ['$scope', '$mdDialog', 
                 } else {
                     // Es de expense.
                     var object = {
+                        id: $scope.id,
                         type: 'Expense',
                         category: $scope.newCat,
                         amount: $scope.amount.value,
                         comment: $scope.entryComment.comment,
                         date: seconds,
-                        indispensable: null,
-                        id: 'Expense' + $scope.newCat + $scope.amount.value + $scope.entryComment.comment + seconds + null
+                        indispensable: null
                     };
+                    $scope.id++;
                     $scope.entries.entriesArray.push(object);
                     $scope.IEentries.IEentriesArray.push(object);
                     if ($scope.categories.categoriesArray.indexOf($scope.newCat) === -1) {
@@ -1039,18 +800,20 @@ angular.module('PFApp').controller('toExistingMdDialogCont', ['$scope', '$mdDial
             d.setUTCSeconds(seconds);
             if ($scope.isIncome.bool) {
                 var object = {
+                    id: $scope.id,
                     type: 'Income',
                     category: $scope.selectedCategory,
                     amount: $scope.amount.value,
                     comment: $scope.entryComment.comment,
                     date: seconds,
-                    indispensable: null,
-                    id: 'Income' + $scope.newCat + $scope.amount.value + $scope.entryComment.comment + seconds + null
+                    indispensable: null
                 };
+                $scope.id++;
                 $scope.incomeEntries.incomeEntriesArray.push(object);
                 $scope.IEentries.IEentriesArray.push(object);
             } else {
                 var object = {
+                    id: $scope.id, 
                     type: 'Expense',
                     category: $scope.selectedCategory,
                     amount: $scope.amount.value,
@@ -1059,6 +822,7 @@ angular.module('PFApp').controller('toExistingMdDialogCont', ['$scope', '$mdDial
                     indispensable: null,
                     id: 'Expense' + $scope.newCat + $scope.amount.value + $scope.entryComment.comment + seconds + null
                 };
+                $scope.id++;
                 $scope.entries.entriesArray.push(object);
                 $scope.IEentries.IEentriesArray.push(object);
             }
@@ -1085,9 +849,6 @@ angular.module('PFApp').controller('toExistingMdDialogCont', ['$scope', '$mdDial
 
 }]);
 
-
-
-
 // ERROR md-dialog controller.
 angular.module('PFApp').controller('errorMdDialogCont', ['$scope', function($scope) {
 
@@ -1095,45 +856,3 @@ angular.module('PFApp').controller('errorMdDialogCont', ['$scope', function($sco
     $scope.message = $scope.errorMessage.errorString;
 
 }]);
-
-
-
-
-
-
-
-
-// First, check if no person is selected (str == ""). If no person is selected, clear the content of the txtHint placeholder and exit the function.
-function showUser(str) {
-    if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
-        return;
-    } else { 
-        // If a person is selected, do the following:
-
-        // Create an XMLHttpRequest object.
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-
-        // Create the function to be executed when the server response is ready.
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
-            }
-            //console.log(document.getElementById("txtHint").innerHTML);
-            console.log(xmlhttp.responseText);
-        };
-        
-        // Send the request off to a file on the server.
-        
-        // Notice that a parameter (q) is added to the URL (with the content of the dropdown list).
-        xmlhttp.open("GET","getuser.php?q="+str,true);
-        xmlhttp.send();
-        
-    }
-}

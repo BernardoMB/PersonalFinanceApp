@@ -56,32 +56,14 @@
                     </md-button>
                 </md-list-item>
                 
-                <div>
-                
-                    <form>
-                        <select name="users" onchange="showUser(this.value)">
-                          <option value="">Select a person:</option>
-                          <option value="1">Peter Griffin</option>
-                          <option value="2">Lois Griffin</option>
-                          <option value="3">Joseph Swanson</option>
-                          <option value="4">Glenn Quagmire</option>
-                      </select>
-                    </form>
-                    
-                        <br>
-                    <div id="txtHint">
-                        <b>Person info will be listed here...</b>
-                    </div>
-                
-                </div>
-                
             </md-list>
 
         </md-sidenav>
 
         <!-- Area de trabajo -->
         <div id="areaDeTrabajo" layout="column" style="width: 80%">
-            <!-- Contenedor de las TABS (all time, hoy, semen, mes, trimestre, año) -->
+            
+            <!--TABS-->
             <div ng-cloak style="height: 50%;">
                 <md-content>
                     <md-tabs md-dynamic-height md-border-bottom md-align-tabs="top">
@@ -90,40 +72,30 @@
                             <md-tab label="ALL TIME">
                                 <md-content class="md-padding">
 
-                                    <!-- Contenedor de gráficos ALLTIME -->
+                                    <!--Contenedor de gráficos ALLTIME-->
                                     <div layout="row">
-                                        <!-- Container #4 (Grafica y tabla de ingresos) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income</h3>
                                             </center>
-
                                             <canvas id="incomeChartAllTime"></canvas>
-
                                         </md-content>
 
-                                        <!-- Container #5 (Grafica de gastos) -->
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Expense</h3>
                                             </center>
-
                                             <canvas id="expenseChartAllTime"></canvas>
-
                                         </md-content>
-
-                                        <!-- Container #6 (Grafica de ingreso vs. gasto) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income vs. Expense</h3>
                                             </center>
-
                                             <canvas id="incomeVsExpenseAllTime"></canvas>
-
                                         </md-content>
+                                        
                                     </div>
 
                                 </md-content>
@@ -132,83 +104,62 @@
                             <md-tab label="TODAY">
                                 <md-content class="md-padding">
 
-                                    <!-- Contenedor de GÁFICOS -->
+                                    <!--Contenedor de gráficos TODAY-->
                                     <div layout="row">
-                                        <!-- Container #4 (Grafica de ingresos) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income</h3>
                                             </center>
-
                                             <canvas id="incomeChartDay"></canvas>
-
                                         </md-content>
-
-                                        <!-- Container #5 (Grafica de gastos) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Expense</h3>
                                             </center>
-
                                             <canvas id="expenseChartDay"></canvas>
-
                                         </md-content>
-
-                                        <!-- Container #6 (Grafica de ingreso vs. gasto) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income vs. Expense</h3>
                                             </center>
-
                                             <canvas id="incomeVsExpenseDay"></canvas>
-
                                         </md-content>
+                                    
                                     </div>
-                                    <!-- Contenedor de TABLA -->
-
+                                    
                                 </md-content>
                             </md-tab>
 
                             <md-tab label="WEEK">
                                 <md-content class="md-padding">
 
-                                    <!-- Contenedor de gráficos -->
+                                    <!--Contenedor de gráficos WEEK-->
                                     <div layout="row">
-                                        <!-- Container #4 (Grafica de ingresos) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income</h3>
                                             </center>
-
                                             <canvas id="incomeChartWeek"></canvas>
-
                                         </md-content>
 
-                                        <!-- Container #5 (Grafica de gastos) -->
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Expense</h3>
                                             </center>
-
                                             <canvas id="expenseChartWeek"></canvas>
-
                                         </md-content>
-
-                                        <!-- Container #6 (Grafica de ingreso vs. gasto) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income vs. Expense</h3>
                                             </center>
-
                                             <canvas id="incomeVsExpenseWeek"></canvas>
-
                                         </md-content>
+                                    
                                     </div>
 
                                 </md-content>
@@ -217,40 +168,30 @@
                             <md-tab label="MONTH">
                                 <md-content class="md-padding">
 
-                                    <!-- Contenedor de gráficos -->
+                                    <!--Contenedor de gráficos MONTH-->
                                     <div layout="row">
-                                        <!-- Container #4 (Grafica de ingresos) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income</h3>
                                             </center>
-
                                             <canvas id="incomeChartMonth"></canvas>
-
                                         </md-content>
-
-                                        <!-- Container #5 (Grafica de gastos) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Expense</h3>
                                             </center>
-
                                             <canvas id="expenseChartMonth"></canvas>
-
                                         </md-content>
-
-                                        <!-- Container #6 (Grafica de ingreso vs. gasto) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income vs. Expense</h3>
                                             </center>
-
                                             <canvas id="incomeVsExpensMonthe2"></canvas>
-
                                         </md-content>
+                                        
                                     </div>
 
                                 </md-content>
@@ -259,40 +200,30 @@
                             <md-tab label="TRIMESTER">
                                 <md-content class="md-padding">
 
-                                    <!-- Contenedor de gráficos -->
+                                    <!--Contenedor de gráficos TRIMESTER-->
                                     <div layout="row">
-                                        <!-- Container #4 (Grafica de ingresos) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income</h3>
                                             </center>
-
                                             <canvas id="incomeChartTrimester"></canvas>
-
                                         </md-content>
-
-                                        <!-- Container #5 (Grafica de gastos) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Expense</h3>
                                             </center>
-
                                             <canvas id="expenseChartTrimester"></canvas>
-
                                         </md-content>
-
-                                        <!-- Container #6 (Grafica de ingreso vs. gasto) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income vs. Expense</h3>
                                             </center>
-
                                             <canvas id="incomeVsExpenseTrimester"></canvas>
-
                                         </md-content>
+                                    
                                     </div>
 
                                 </md-content>
@@ -300,41 +231,31 @@
 
                             <md-tab label="YEAR">
                                 <md-content class="md-padding">
-
-                                    <!-- Contenedor de gráficos -->
+                                    
+                                    <!--Contenedor de gráficos YEAR-->
                                     <div layout="row">
-                                        <!-- Container #4 (Grafica de ingresos) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income</h3>
                                             </center>
-
                                             <canvas id="incomeChartYear"></canvas>
-
                                         </md-content>
-
-                                        <!-- Container #5 (Grafica de gastos) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Expense</h3>
                                             </center>
-
                                             <canvas id="expenseChartYear"></canvas>
-
                                         </md-content>
-
-                                        <!-- Container #6 (Grafica de ingreso vs. gasto) -->
+                                        
                                         <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-
                                             <center>
                                                 <h3>Income vs. Expense</h3>
                                             </center>
-
                                             <canvas id="incomeVsExpenseYear"></canvas>
-
                                         </md-content>
+                                        
                                     </div>
 
                                 </md-content>
@@ -352,7 +273,7 @@
                     <span ng-show="superavit.bool" style="color:#04B45F;">Surplus: {{balance}}</span>
                     <span ng-hide="superavit.bool" style="color:#FA5858;">Deficit: {{balance}}</span>
                     <div flex></div>
-                    <md-button class="md-icon-button" ng-click="graphMain()">
+                    <md-button class="md-icon-button" ng-click="graphMain()" style="width: 150px;">
                         <md-icon>refresh</md-icon>
                     </md-button>
                 </div>
@@ -377,14 +298,13 @@
                             <tr md-row>
                                 <th md-column md-order-by="type"><span>Type</span></th>
                                 <th md-column md-order-by="category"><span>Category</span></th>
-                                <th md-column md-order-by="category"><span>Category</span></th>
                                 <th md-column md-numeric md-order-by="amount" md-desc><span>Amount</span></th>
                                 <th md-column md-numeric md-order-by="date"><span>Date</span></th>
                                 <th md-column md-order-by="comment"><span>Comment</span></th>
                             </tr>
                         </thead>
                         <tbody md-body>
-                            <tr md-row md-select="entry" md-on-select="logItem" md-auto-select="options.autoSelect" /*ng-disabled="dessert.calories.value > 400"*/ ng-repeat="entry in IEentries.IEentriesArray | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                            <tr md-row md-select="entry" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="entry in IEentries.IEentriesArray | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
                                 <td md-cell>
                                     <md-select ng-model="entry.type" placeholder="Other" ng-change="tableTypeHandleChange()">
                                         <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
@@ -395,7 +315,6 @@
                                         <md-option ng-value="category" ng-repeat="category in getCategories(entry.type)">{{category}}</md-option>
                                     </md-select>
                                 </td>
-                                <td md-cell>{{entry.category}}</td>
                                 <td md-cell>{{entry.amount}}</td>
                                 <td md-cell>{{entry.date}}</td>
                                 <td md-cell ng-click="tableEditEntryComment($event, entry)" ng-class="{'md-placeholder': !entry.comment}">
