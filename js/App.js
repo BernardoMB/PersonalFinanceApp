@@ -22,7 +22,7 @@ angular.module('PFApp', ['ngMaterial', 'md.data.table']).run(function($log) {
     $log.debug("Personal Fiance App is ready!");
 });
 
-angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$mdMedia', '$log', '$mdEditDialog', '$q', '$timeout', function($scope, $mdDialog, $mdMedia, $log, $mdEditDialog, $timeout) {
+angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$mdMedia', '$log', '$mdEditDialog', '$timeout', '$mdSidenav', function($scope, $mdDialog, $mdMedia, $log, $mdEditDialog, $timeout, $mdSidenav) {
     
     // App's code.
 
@@ -526,8 +526,44 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
     // Edicion de valores de la tabla */
     
     // Código de la tabla */
+    
+    // Código sideNAv
+    $scope.toggleLeft = buildDelayedToggler('left');
+    function buildDelayedToggler(navID) {
+      return debounce(function() {
+        // Component lookup should always be available since we are not using `ng-if`
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            $log.debug("toggle " + navID + " is done");
+          });
+      }, 200);
+    }
+    function debounce(func, wait, context) {
+      var timer;
 
-}]);
+      return function debounced() {
+        var context = $scope,
+            args = Array.prototype.slice.call(arguments);
+        $timeout.cancel(timer);
+        timer = $timeout(function() {
+          timer = undefined;
+          func.apply(context, args);
+        }, wait || 10);
+      };
+    }
+    
+
+}]) .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+    $scope.close = function () {
+      // Component lookup should always be available since we are not using `ng-if`
+      $mdSidenav('left').close()
+        .then(function () {
+          $log.debug("close LEFT is done");
+        });
+
+    };
+  });
 
 // NEW ENTRY md Dialog controller.
 angular.module('PFApp').controller('newEntryCont', ['$scope', '$mdDialog', function($scope, $mdDialog) {

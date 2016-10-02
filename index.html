@@ -34,302 +34,334 @@
 
     <!-- Container #2 -->
     <div class="container" layout="row" flex ng-controller="ExpenseAppCont">
-
-        <!-- Container #3 -->
-        <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2" style="width: 20%">
-
-            <md-list>
-
-                <!-- List item #1 NEW INCOME -->
-                <md-list-item>
-                    <md-button ng-click="openNewEntryMdDialog(true)">
-                        <md-icon md-svg-src="svgs/avatar-3.svg" class="avatar"></md-icon>
-                        New income
-                    </md-button>
-                </md-list-item>
-
-                <!-- List item #2 NEW EXPENSE -->
-                <md-list-item>
-                    <md-button ng-click="openNewEntryMdDialog(false)">
-                        <md-icon md-svg-src="svgs/avatar-4.svg" class="avatar"></md-icon>
-                        New expense
-                    </md-button>
-                </md-list-item>
-                
-            </md-list>
-
-        </md-sidenav>
-
-        <!-- Area de trabajo -->
-        <div id="areaDeTrabajo" layout="column" style="width: 80%">
+        
+        <section layout="row" flex>
             
-            <!--TABS-->
-            <div ng-cloak style="height: 50%;">
-                <md-content>
-                    <md-tabs md-dynamic-height md-border-bottom md-align-tabs="top">
-                        <center>
+            <!-- Container #3 -->
+            <!--
+            <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2" style="width: 20%">
 
-                            <md-tab label="ALL TIME">
-                                <md-content class="md-padding">
+                <md-list>
+                    
+                    <md-list-item>
+                        <md-button ng-click="openNewEntryMdDialog(true)">
+                            <md-icon md-svg-src="svgs/avatar-3.svg" class="avatar"></md-icon>
+                            New income
+                        </md-button>
+                    </md-list-item>
 
-                                    <!--Contenedor de gráficos ALLTIME-->
-                                    <div layout="row">
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income</h3>
-                                            </center>
-                                            <canvas id="incomeChartAllTime"></canvas>
-                                        </md-content>
+                    <md-list-item>
+                        <md-button ng-click="openNewEntryMdDialog(false)">
+                            <md-icon md-svg-src="svgs/avatar-4.svg" class="avatar"></md-icon>
+                            New expense
+                        </md-button>
+                    </md-list-item>
 
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Expense</h3>
-                                            </center>
-                                            <canvas id="expenseChartAllTime"></canvas>
-                                        </md-content>
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income vs. Expense</h3>
-                                            </center>
-                                            <canvas id="incomeVsExpenseAllTime"></canvas>
-                                        </md-content>
-                                        
-                                    </div>
+                </md-list>
 
-                                </md-content>
-                            </md-tab>
+            </md-sidenav>
+            -->
 
-                            <md-tab label="TODAY">
-                                <md-content class="md-padding">
+            <md-sidenav
+                class="md-sidenav-left"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-md')"
+                md-whiteframe="4">
 
-                                    <!--Contenedor de gráficos TODAY-->
-                                    <div layout="row">
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income</h3>
-                                            </center>
-                                            <canvas id="incomeChartDay"></canvas>
-                                        </md-content>
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Expense</h3>
-                                            </center>
-                                            <canvas id="expenseChartDay"></canvas>
-                                        </md-content>
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income vs. Expense</h3>
-                                            </center>
-                                            <canvas id="incomeVsExpenseDay"></canvas>
-                                        </md-content>
-                                    
-                                    </div>
-                                    
-                                </md-content>
-                            </md-tab>
+              <md-toolbar class="md-theme-indigo">
+                <h1 class="md-toolbar-tools">Sidenav Left</h1>
+              </md-toolbar>
+              <md-content layout-padding ng-controller="LeftCtrl">
+                <md-button ng-click="close()" class="md-primary" hide-gt-md>
+                  Close Sidenav Left
+                </md-button>
+                <p hide show-gt-md>
+                  This sidenav is locked open on your device. To go back to the default behavior,
+                  narrow your display.
+                </p>
+              </md-content>
 
-                            <md-tab label="WEEK">
-                                <md-content class="md-padding">
+            </md-sidenav>
+            
+            <!-- Area de trabajo -->
+            <div id="areaDeTrabajo" layout="column" style="width: 80%">
 
-                                    <!--Contenedor de gráficos WEEK-->
-                                    <div layout="row">
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income</h3>
-                                            </center>
-                                            <canvas id="incomeChartWeek"></canvas>
-                                        </md-content>
+                <!--TABS-->
+                <div ng-cloak style="height: 50%;">
+                    <md-content>
+                        <md-tabs md-dynamic-height md-border-bottom md-align-tabs="top">
+                            <center>
 
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Expense</h3>
-                                            </center>
-                                            <canvas id="expenseChartWeek"></canvas>
-                                        </md-content>
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income vs. Expense</h3>
-                                            </center>
-                                            <canvas id="incomeVsExpenseWeek"></canvas>
-                                        </md-content>
-                                    
-                                    </div>
+                                <md-tab label="ALL TIME">
+                                    <md-content class="md-padding">
 
-                                </md-content>
-                            </md-tab>
+                                        <!--Contenedor de gráficos ALLTIME-->
+                                        <div layout="row">
 
-                            <md-tab label="MONTH">
-                                <md-content class="md-padding">
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income</h3>
+                                                </center>
+                                                
+                                                <md-button id="popo" ng-click="toggleLeft()"
+                                                    class="md-primary" hide-gt-md>
+                                                    Toggle left
+                                                </md-button>
+                                                
+                                                <canvas id="incomeChartAllTime"></canvas>
+                                            </md-content>
 
-                                    <!--Contenedor de gráficos MONTH-->
-                                    <div layout="row">
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income</h3>
-                                            </center>
-                                            <canvas id="incomeChartMonth"></canvas>
-                                        </md-content>
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Expense</h3>
-                                            </center>
-                                            <canvas id="expenseChartMonth"></canvas>
-                                        </md-content>
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income vs. Expense</h3>
-                                            </center>
-                                            <canvas id="incomeVsExpensMonthe2"></canvas>
-                                        </md-content>
-                                        
-                                    </div>
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Expense</h3>
+                                                </center>
+                                                <canvas id="expenseChartAllTime"></canvas>
+                                            </md-content>
 
-                                </md-content>
-                            </md-tab>
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income vs. Expense</h3>
+                                                </center>
+                                                <canvas id="incomeVsExpenseAllTime"></canvas>
+                                            </md-content>
 
-                            <md-tab label="TRIMESTER">
-                                <md-content class="md-padding">
+                                        </div>
 
-                                    <!--Contenedor de gráficos TRIMESTER-->
-                                    <div layout="row">
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income</h3>
-                                            </center>
-                                            <canvas id="incomeChartTrimester"></canvas>
-                                        </md-content>
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Expense</h3>
-                                            </center>
-                                            <canvas id="expenseChartTrimester"></canvas>
-                                        </md-content>
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income vs. Expense</h3>
-                                            </center>
-                                            <canvas id="incomeVsExpenseTrimester"></canvas>
-                                        </md-content>
-                                    
-                                    </div>
+                                    </md-content>
+                                </md-tab>
 
-                                </md-content>
-                            </md-tab>
+                                <md-tab label="TODAY">
+                                    <md-content class="md-padding">
 
-                            <md-tab label="YEAR">
-                                <md-content class="md-padding">
-                                    
-                                    <!--Contenedor de gráficos YEAR-->
-                                    <div layout="row">
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income</h3>
-                                            </center>
-                                            <canvas id="incomeChartYear"></canvas>
-                                        </md-content>
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Expense</h3>
-                                            </center>
-                                            <canvas id="expenseChartYear"></canvas>
-                                        </md-content>
-                                        
-                                        <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
-                                            <center>
-                                                <h3>Income vs. Expense</h3>
-                                            </center>
-                                            <canvas id="incomeVsExpenseYear"></canvas>
-                                        </md-content>
-                                        
-                                    </div>
+                                        <!--Contenedor de gráficos TODAY-->
+                                        <div layout="row">
 
-                                </md-content>
-                            </md-tab>
+                                            
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income</h3>
+                                                </center>
+                                                <canvas id="incomeChartDay"></canvas>
+                                            </md-content>
 
-                        </center>
-                    </md-tabs>
-                </md-content>
-            </div>
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Expense</h3>
+                                                </center>
+                                                <canvas id="expenseChartDay"></canvas>
+                                            </md-content>
 
-            <!-- TABLE TOOLBAR -->
-            <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length" style="background-color: #F2F2F2;">
-                <div class="md-toolbar-tools">
-                    <span style="padding-right: 24px;">All Time Entries</span>
-                    <span ng-show="superavit.bool" style="color:#04B45F;">Surplus: {{balance}}</span>
-                    <span ng-hide="superavit.bool" style="color:#FA5858;">Deficit: {{balance}}</span>
-                    <div flex></div>
-                    <md-button class="md-icon-button" ng-click="graphMain()" style="width: 150px;">
-                        <md-icon>refresh</md-icon>
-                    </md-button>
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income vs. Expense</h3>
+                                                </center>
+                                                <canvas id="incomeVsExpenseDay"></canvas>
+                                            </md-content>
+
+                                        </div>
+
+                                    </md-content>
+                                </md-tab>
+
+                                <md-tab label="WEEK">
+                                    <md-content class="md-padding">
+
+                                        <!--Contenedor de gráficos WEEK-->
+                                        <div layout="row">
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income</h3>
+                                                </center>
+                                                <canvas id="incomeChartWeek"></canvas>
+                                            </md-content>
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Expense</h3>
+                                                </center>
+                                                <canvas id="expenseChartWeek"></canvas>
+                                            </md-content>
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income vs. Expense</h3>
+                                                </center>
+                                                <canvas id="incomeVsExpenseWeek"></canvas>
+                                            </md-content>
+
+                                        </div>
+
+                                    </md-content>
+                                </md-tab>
+
+                                <md-tab label="MONTH">
+                                    <md-content class="md-padding">
+
+                                        <!--Contenedor de gráficos MONTH-->
+                                        <div layout="row">
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income</h3>
+                                                </center>
+                                                <canvas id="incomeChartMonth"></canvas>
+                                            </md-content>
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Expense</h3>
+                                                </center>
+                                                <canvas id="expenseChartMonth"></canvas>
+                                            </md-content>
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income vs. Expense</h3>
+                                                </center>
+                                                <canvas id="incomeVsExpensMonthe2"></canvas>
+                                            </md-content>
+
+                                        </div>
+
+                                    </md-content>
+                                </md-tab>
+
+                                <md-tab label="TRIMESTER">
+                                    <md-content class="md-padding">
+
+                                        <!--Contenedor de gráficos TRIMESTER-->
+                                        <div layout="row">
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income</h3>
+                                                </center>
+                                                <canvas id="incomeChartTrimester"></canvas>
+                                            </md-content>
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Expense</h3>
+                                                </center>
+                                                <canvas id="expenseChartTrimester"></canvas>
+                                            </md-content>
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income vs. Expense</h3>
+                                                </center>
+                                                <canvas id="incomeVsExpenseTrimester"></canvas>
+                                            </md-content>
+
+                                        </div>
+
+                                    </md-content>
+                                </md-tab>
+
+                                <md-tab label="YEAR">
+                                    <md-content class="md-padding">
+
+                                        <!--Contenedor de gráficos YEAR-->
+                                        <div layout="row">
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income</h3>
+                                                </center>
+                                                <canvas id="incomeChartYear"></canvas>
+                                            </md-content>
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Expense</h3>
+                                                </center>
+                                                <canvas id="expenseChartYear"></canvas>
+                                            </md-content>
+
+                                            <md-content flex id="content" class="lightgreen" flex style="padding: 0px;">
+                                                <center>
+                                                    <h3>Income vs. Expense</h3>
+                                                </center>
+                                                <canvas id="incomeVsExpenseYear"></canvas>
+                                            </md-content>
+
+                                        </div>
+
+                                    </md-content>
+                                </md-tab>
+
+                            </center>
+                        </md-tabs>
+                    </md-content>
                 </div>
-            </md-toolbar>
-            
-            <!-- ROWS SELECTED TOOLBAR -->
-            <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
-                <div class="md-toolbar-tools">
-                    <md-button ng-click="deleteSelectedEntries()">
-                        <i class="material-icons md-30" style="padding-top: 10px;">delete</i>
-                    </md-button>
-                    <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
+
+                <!-- TABLE TOOLBAR -->
+                <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length" style="background-color: #F2F2F2; width:100%; display: inline-block;">
+                    <div class="md-toolbar-tools">
+                        <span style="padding-right: 24px;">All Time Entries</span>
+                        <span ng-show="superavit.bool" style="color:#04B45F;">Surplus: {{balance}}</span>
+                        <span ng-hide="superavit.bool" style="color:#FA5858;">Deficit: {{balance}}</span>
+                        <div flex></div>
+                        <md-button class="md-icon-button" ng-click="graphMain()" style="width: 150px;">
+                            <md-icon>refresh</md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+
+                <!-- ROWS SELECTED TOOLBAR -->
+                <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
+                    <div class="md-toolbar-tools">
+                        <md-button ng-click="deleteSelectedEntries()">
+                            <i class="material-icons md-30" style="padding-top: 10px;">delete</i>
+                        </md-button>
+                        <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
+                    </div>
+                </md-toolbar>
+
+                <!-- TABLA -->
+                <div style="height: 40%; overflow: scroll;">
+
+                    <md-table-container>
+                        <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" /*md-progress="promise"*/>
+                            <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+                                <tr md-row>
+                                    <th md-column md-order-by="type"><span>Type</span></th>
+                                    <th md-column md-order-by="category"><span>Category</span></th>
+                                    <th md-column md-numeric md-order-by="amount" md-desc><span>Amount</span></th>
+                                    <th md-column md-numeric md-order-by="date"><span>Date</span></th>
+                                    <th md-column md-order-by="comment"><span>Comment</span></th>
+                                </tr>
+                            </thead>
+                            <tbody md-body>
+                                <tr md-row md-select="entry" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="entry in IEentries.IEentriesArray | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                                    <td md-cell>
+                                        <md-select ng-model="entry.type" placeholder="Other" ng-change="tableTypeHandleChange()">
+                                            <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
+                                        </md-select>
+                                    </td>
+                                    <td md-cell>
+                                        <md-select ng-model="entry.category" placeholder="Other" ng-change="tableTypeHandleChange()">
+                                            <md-option ng-value="category" ng-repeat="category in getCategories(entry.type)">{{category}}</md-option>
+                                        </md-select>
+                                    </td>
+                                    <td md-cell>{{entry.amount}}</td>
+                                    <td md-cell>{{entry.date}}</td>
+                                    <td md-cell ng-click="tableEditEntryComment($event, entry)" ng-class="{'md-placeholder': !entry.comment}">
+                                        {{entry.comment || 'Add a comment'}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+
+                    <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{IEentries.IEentriesArray.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+
                 </div>
-            </md-toolbar>
-            
-            <!-- TABLA -->
-            <div style="height: 40%; overflow: scroll;">
 
-                <md-table-container>
-                    <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" /*md-progress="promise"*/>
-                        <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
-                            <tr md-row>
-                                <th md-column md-order-by="type"><span>Type</span></th>
-                                <th md-column md-order-by="category"><span>Category</span></th>
-                                <th md-column md-numeric md-order-by="amount" md-desc><span>Amount</span></th>
-                                <th md-column md-numeric md-order-by="date"><span>Date</span></th>
-                                <th md-column md-order-by="comment"><span>Comment</span></th>
-                            </tr>
-                        </thead>
-                        <tbody md-body>
-                            <tr md-row md-select="entry" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="entry in IEentries.IEentriesArray | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-                                <td md-cell>
-                                    <md-select ng-model="entry.type" placeholder="Other" ng-change="tableTypeHandleChange()">
-                                        <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
-                                    </md-select>
-                                </td>
-                                <td md-cell>
-                                    <md-select ng-model="entry.category" placeholder="Other" ng-change="tableTypeHandleChange()">
-                                        <md-option ng-value="category" ng-repeat="category in getCategories(entry.type)">{{category}}</md-option>
-                                    </md-select>
-                                </td>
-                                <td md-cell>{{entry.amount}}</td>
-                                <td md-cell>{{entry.date}}</td>
-                                <td md-cell ng-click="tableEditEntryComment($event, entry)" ng-class="{'md-placeholder': !entry.comment}">
-                                    {{entry.comment || 'Add a comment'}}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </md-table-container>
-
-                <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{IEentries.IEentriesArray.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
-
-            </div>
-
-        </div>
+</div>
+        
+        </section>
 
     </div>
 
