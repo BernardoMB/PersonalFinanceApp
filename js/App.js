@@ -1,4 +1,5 @@
 // El tema de bases de datos será manejado a traves de Andrew Mead.
+// TODO: Ya no manejar arrays de categorias, hacaer lo todo con los arrays d elas entradas.
 
 incomeColors = [
     '#0072BB',
