@@ -1,75 +1,163 @@
-html, body {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    position: relative;
+    display: flex;
+    min-height: 80vh;
+    overflow-x: hidden;
+    width: 100%;
+    z-index: 0;
+}
+.sidenav {
+    min-width: 202.667;
+    max-width: 202.667;
+    margin-left: -360px;
+    transition: all ease 0.3s;
+    display: flex;
+    flex-direction: column;
+    background-color: #333;
+    box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.25);
+}
+.content {
+    flex: 1;
+    transition: all ease 0.3s;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background-color: #fff;
+}
+/*.sidenav--overlay {
+  position: absolute;
+  height: 100%;
+}
+
+.sidenav--push + .content {
+  min-width: 100%;
+}*/
+
+.sidenav--reveal {
+    position: absolute;
+    /*  height: 100%;*/
+    
+    z-index: 98;
+    margin-left: 0;
+}
+.sidenav--reveal + .content {
+    z-index: 99;
+}
+.sidenav.active {
+    margin-left: 0;
+}
+.sidenav--reveal.active + .content {
+    transform: translate3d(320px, 0, 0);
+}
+/*body {
   font-family: 'Roboto', sans-serif;
-  font-size:14px;
-  height:100%;
-  margin: 0px;
-  padding: 0px;
+  color: #333;
+  line-height: 1.45;
+}*/
+
+.sidenav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px;
+    border-bottom: 1px solid #444;
+    transition: box-shadow linear .15s;
+}
+.sidenav a:hover {
+    box-shadow: inset 3px 0 0;
+}
+/*article {
+  background-color: #fff;
+  padding: 1.5em;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+article h1, article h2 {
+  font-family: 'Slabo 27px', serif;
+  color: #333;
+}
+article h1 {
+  font-size: 2em;
+  padding: 0.25em 0;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #eee;
+  text-transform: uppercase;
+}
+article h2 {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin: 0.5em 0 0.75em;
+}*/
+/*.options {
+  background-color: #4fb9e4;
+  display: flex;
+  align-items: center;
 }
 
-/** Enabled Step 3... */
+.btn-toggle {
+  display: flex;
+  cursor: pointer;
+}
+.btn-toggle > input[type="radio"] {
+  display: none;
+}
+.btn-toggle > span {
+  padding: 0.85em 1em;
+  color: rgba(255, 255, 255, 0.5);
+}
+.btn-toggle > input[type="radio"]:checked + span {
+  background-color: #379ac1;
+  color: #fff;
+}
+.btn-toggle:hover span {
+  color: #fff;
+}
+*/
 
-md-toolbar h3 {
-  margin: auto;
-  font-weight: 500;
+.callout {
+    padding: 0.85em;
+    margin: 2em 0.5em;
+    font-size: 0.95em;
+}
+.callout p:not(:last-of-type) {
+    margin-bottom: 1em;
+}
+.callout--info {
+    border-left: 3px solid #4dc9fb;
+}
+.btn--fab {
+    position: fixed;
+    top: 4px;
+    left: 10px;
+    
+    width: 4em;
+    height: 4em;
+    
+    border: 0;
+    border-radius: 0%;
+    background-color: transparent;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.0);
+    outline: 0;
+    z-index: 999;
+    cursor: pointer;
+}
+.btn--fab .icon {
+    font-size: 3em;
+    color: #fff;
+}
+code {
+    background-color: #eee;
+    border: 1px solid #dedede;
+    padding: 0.2em 0.3em;
+    border-radius: 2px;
+    font-family: monospace;
+    color: #555;
+    margin: 0 0.2em;
+}
+strong {
+    font-weight: 600;
 }
 
-md-list-item > button {
-  width:100%;
-  text-align:left !important;
-}
-
-#content  {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 5px;
-}
-
-.avatar {
-  position: relative;
-  width: 128px;
-  height: 128px;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  display: inline-block;
-  overflow: hidden;
-  margin: 0px;
-  vertical-align: middle;
-  zoom:0.70;
-  transform: translateZ(0);
-  -webkit-transform: scale(0.70);
-  -moz-transform:scale(0.70);
-}
-
-md-toolbar.md-table-toolbar.alternate {
-  color: #1e88e5;
-  background-color: #e3f2fd;
-}
-
-md-toolbar.md-table-toolbar.alternate .md-toolbar-tools {
-  font-size: 16px;
-}
-
-md-card:first-child {
-  padding: 8px 8px 8px 24px;
-}
-
-.checkboxes > md-checkbox {
-  margin: 0;
-  padding: 16px;
-  min-width: 300px;
-  flex: 0 0 auto;
-}
-
-/* Rules for sizing the icon. */
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
-
-/* Rules for using icons as black on a light background. */
-.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
-.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
-
-/* Rules for using icons as white on a dark background. */
-.material-icons.md-light { color: rgba(255, 255, 255, 1); }
-.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }

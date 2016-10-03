@@ -334,14 +334,6 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
         indispensable: null,
         type: "Expense"
     }, {
-        id: 7,
-        amount: "1000",
-        category: "Fer",
-        comment: "Salidas",
-        date: 1470714982.013,
-        indispensable: null,
-        type: "Expense"
-    }, {
         id: 8,
         amount: "3500",
         category: "Casa",
@@ -351,7 +343,7 @@ angular.module('PFApp').controller('ExpenseAppCont', ['$scope', '$mdDialog', '$m
         type: "Expense"
     }];
     // Expense categories.
-    var expenseCategoriesFake = ["Comida", "Coche", "Gasolina", "Diversion", "Fer", "Casa"];
+    var expenseCategoriesFake = ["Comida", "Coche", "Gasolina", "Diversion", "Casa"];
     // Income and expense:
     $scope.generalFake = [];
     for (var i in incomeEntriesFake) {
