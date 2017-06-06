@@ -1,0 +1,26 @@
+{
+  "name": "pfapp",
+  "version": "1.0.0",
+  "description": "Record your income and expences",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BernardoMB/PersonalFinanceApp.git"
+  },
+  "author": "Bernardo Mondragon Brozon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BernardoMB/PersonalFinanceApp/issues"
+  },
+  "homepage": "https://github.com/BernardoMB/PersonalFinanceApp#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.4",
+    "nodemon": "^1.11.0"
+  }
+}
